@@ -149,3 +149,29 @@ class Game:
 
         self.new_game()
         self.loop()
+
+    # ---------- GAME BARU ----------
+    def new_game(self):
+        self.score = 0
+        self.lives = 3
+
+        self.px = (W - PADDLE_W) / 2
+
+        self.particles.clear()
+
+        for p in self.particles:
+            self.c.delete(p["id"])
+
+        self.reset_ball()
+        self.make_blocks()
+
+    def reset_ball(self):
+        self.state = "ready"
+
+        self.bx = self.px + PADDLE_W / 2
+        self.by = PADDLE_Y - RADIUS
+
+        self.vx = 0
+        self.vy = 0
+
+        self.history = []
